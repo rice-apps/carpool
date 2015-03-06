@@ -1,2 +1,3 @@
 venv contains the virtual environment that the server runs in
-to start the server, just execute the file run.py
+to start the server, just execute the file run.py.  Then, go to
+your browser and enter in "localhost:5000" (sans quotes)
