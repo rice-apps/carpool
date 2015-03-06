@@ -1,3 +1,2 @@
-hellog world
-
-Making changes
+venv contains the virtual environment that the server runs in
+to start the server, just execute the file run.py
