@@ -1,7 +1,22 @@
 {% extends "base.html" %}
 {% block content %}
-    <h1>Hi, {{ user.nickname }}!</h1>
-    {% for post in posts %}
-    <div><p>{{ post.author.nickname }} says: <b>{{ post.body }}</b></p></div>
-    {% endfor %}
+    <h1>TRIPS</h1>
+	
+    <table style="width:100%">
+		<tr>
+			<th>Depart From:</th>
+			<th>Arrive At:</th>
+			<th>Time:</th>
+			<th>Contact the driver at:</th>
+		</tr>
+		{% for trip in trips %}
+		<tr>
+			<td>{{trip.origin}}</td>
+			<td>{{trip.destination}}</td>
+			<td>{{trip.TOD}}-{{trip.TOA}} on {{trip.date}}</td>
+			<td>{{trip.contact_info}}</td>
+		</tr>
+		{% endfor %}
+	</table>
+	
 {% endblock %}

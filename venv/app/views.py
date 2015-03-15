@@ -4,6 +4,7 @@ from flask.ext.login import login_user, logout_user, current_user, login_require
 from app import app, db#,oid, lm
 from .forms import LoginForm
 from .models import User
+from .models import Trip
 
 @app.route('/login', methods=['GET','POST'])
 def login():
@@ -15,9 +16,18 @@ def login():
 @app.route('/')
 @app.route('/index')
 def index():
-	user = {'nickname': 'Miguel'} #fake user
-	db_user = User.query.filter_by(nickname=user['nickname']).first()
-	posts = db_user.posts.all()
+	
+	trips = Trip.query.all()
+	
+	return render_template('index.html',
+							title='Home',
+							trips=trips)
+	
+	
+	
+	#user = {'nickname': 'Miguel'} #fake user
+	#db_user = User.query.filter_by(nickname=user['nickname']).first()
+	#posts = db_user.posts.all()
 	
 	"""
 	Generic form of a posts array, will work.
@@ -32,13 +42,9 @@ def index():
         }
 	]
 	"""
+	#return render_template('index.html',
+	#						title='Home',
+	#						user=user,
+	#						#user={'nickname':''},
+	#						posts=posts)
 	
-	return render_template('index.html',
-							title='Home',
-							user=user,
-							#user={'nickname':''},
-							posts=posts)
-	
-@app.route('/seven')
-def ret_seven():
-	return "7?"

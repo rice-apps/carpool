@@ -13,6 +13,7 @@ http://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-iv-database
 for more on the relationship between User and Post, and how to access one from the other
 """
 
+
 class User(db.Model):
     # Structure of the data held in a User
 	id = db.Column(db.Integer, primary_key=True)
@@ -29,6 +30,19 @@ class Post(db.Model):
 	body = db.Column(db.String(140))
 	timestamp = db.Column(db.DateTime)
 	user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+	# For printing
+	def __repr__(self):
+		return '<Post %r>' % (self.body)
+
+class Trip(db.Model):
+	# Structure of the data held in a Trip
+	id = db.Column(db.Integer, primary_key=True)
+	origin = db.Column(db.String(64), index=True, unique=True) #Thought: break up into subsections (street, city, etc) for standardization
+	destination = db.Column(db.String(64), index=True, unique=True) #Thought: break up into subsections (street, city, etc) for standardization
+	contact_info = db.Column(db.String(64), index=True, unique=True) 
+	date = db.Column(db.String(8), index=True, unique=True)
+	TOD = db.Column(db.String(8), index=True, unique=True)#Time Of Departure, form: "HH:MM"
+	TOA = db.Column(db.String(8), index=True, unique=True)#Time Of Arrival, form: "HH:MM"
 	# For printing
 	def __repr__(self):
 		return '<Post %r>' % (self.body)
