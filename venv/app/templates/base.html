@@ -1,14 +1,24 @@
 <html>
   <head>
+	<link rel="stylesheet" href="../static/css/basestyle.css">
     {% if title %}
-    <title>{{ title }} - microblog</title>
+    <title>{{ title }} - carpool</title>
     {% else %}
-    <title>Welcome to microblog</title>
+    <title>Welcome to Rice Carpool</title>
     {% endif %}
   </head>
   <body>
-    <div>Microblog: <a href="/index">Home</a></div>
+    <div>Carpool: <a href="/index">Home</a></div>
     <hr>
+	{% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <ul>
+        {% for message in messages %}
+            <li>{{ message }} </li>
+        {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
     {% block content %}{% endblock %}
   </body>
 </html>
