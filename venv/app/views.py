@@ -9,6 +9,7 @@ from .models import Trip
 @app.route('/newtrip', methods=['GET','POST'])
 def newtrip():
 	form = NewTripForm()
+	# Validation now just ensures no fields are empty, should check that times are valid
 	if form.validate_on_submit():
 		flash("Received trip from %s to %s" % (form.destination.data, form.origin.data))
 		t = Trip(origin=form.origin.data,
