@@ -1,0 +1,33 @@
+<div>
+  <h1>Submit a trip</h1>
+    <form ng-controller="NewTripController" ng-submit="submit()">
+      <div class="form-group">
+        <label for="origin">Depart from: </label>
+        <input type="text" class="form-control" ng-model="newtrip.origin" id="origin" placeholder="Enter origin">
+      </div>
+      <div class="form-group">
+        <label for="destination">Arrive at: </label>
+        <input type="text" class="form-control" ng-model="newtrip.destination" id="destination" placeholder="Enter destination">
+      </div>
+      <div class="form-group">
+        <label for="date">Trip's date: </label>
+        <input type="date" class="form-control" ng-model="newtrip.date" id="date" placeholder="Enter trip's date">
+      </div>
+      <div class="form-group">
+        <label for="depart_time">Departure time: </label>
+        <input type="datetime" class="form-control" ng-model="newtrip.depart_time" id="depart_time" placeholder="Enter departure time">
+      </div>
+      <div class="form-group">
+        <label for="arrival_time">Arrival time: </label>
+        <input type="datetime" class="form-control" ng-model="newtrip.arrival_time" id="arrival_time" placeholder="Enter estimated arrival time">
+      </div>
+      <div class="form-group">
+        <label for="contact">Contact information: </label>
+        <input type="text" class="form-control" ng-model="newtrip.contact" id="contact" placeholder="Enter contact info">
+      </div>
+      </br>
+        <button type="submit" class="btn btn-default">Submit</button>
+        <button type="reset" ng-click="reset()" class="btn btn-default">Reset</button>
+    </form>
+
+</div>
