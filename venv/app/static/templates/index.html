@@ -38,12 +38,14 @@
             <div class="inner">
               <h3 class="masthead-brand">Carpool</h3>
               <nav>
-                <ul class="nav masthead-nav">
-                  <li class="active"><a href="#/">Home</a></li>
-                  <li><a href="#trips">Trips</a></li>
-                  <li><a href="#newtrip">New trip</a></li>
-                  <li><a href="#test">Contact</a></li>
-                </ul>
+                  <div class="nav masthead-nav" ng-controller="NavbarController">
+                    <ul class="nav navbar-nav">
+                        <li ng-class="{ active: isActive('/')}"><a href="#/">Home</a></li>
+                        <li ng-class="{ active: isActive('/trips')}"><a href="#trips">Trips</a></li>
+                        <li ng-class="{ active: isActive('/newtrip')}"><a href="#newtrip">New trip</a></li>
+                        <li ng-class="{ active: isActive('/')}"><a href="#test">Contact</a></li>
+                    </ul>
+                </div>
               </nav>
             </div>
           </div>
@@ -87,7 +89,11 @@
     <!-- Trips display controller -->
    <script src="/static/js/controllers/ShowTripsController.js"></script>
 
-  <script src="/static/js/controllers/TripsData.js"></script>
+   <!-- Trip retrieval service -->
+   <script src="/static/js/controllers/TripsData.js"></script>
+
+   <!-- Navigation bar controller -->
+   <script src="/static/js/controllers/NavbarController.js"></script>
 
 
   </body>
