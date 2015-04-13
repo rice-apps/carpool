@@ -43,6 +43,7 @@ class Trip(db.Model):
 	date = db.Column(db.String(8), index=True, unique=True)
 	TOD = db.Column(db.String(8), index=True, unique=True)#Time Of Departure, form: "HH:MM"
 	TOA = db.Column(db.String(8), index=True, unique=True)#Time Of Arrival, form: "HH:MM"
+	seats = db.Column(db.String(8), index=True, unique=True)
 	# For printing
 
 	def __repr__(self):
@@ -56,4 +57,5 @@ class Trip(db.Model):
 		"date" :  self.date,
 		"TOD" : self.TOD,
 		"TOA" : self.TOA,
+		"seats" : self.seats
 		}
