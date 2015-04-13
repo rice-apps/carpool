@@ -4,7 +4,6 @@ angular.module('carpool').controller("NewTripController", function($location, $h
         console.log($scope.newtrip);
         $http.post('/newtrip', angular.toJson($scope.newtrip) )
              .success(function(){ $location.path('/index') })
-             .error(function(){alert('fail')});
     };
 
         $scope.master = {};

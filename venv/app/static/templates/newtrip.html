@@ -3,31 +3,31 @@
     <form ng-controller="NewTripController" ng-submit="submit()">
       <div class="form-group">
         <label for="origin">Depart from: </label>
-        <input type="text" class="form-control" ng-model="newtrip.origin" id="origin" placeholder="Enter origin">
+        <input type="text" class="form-control" ng-model="newtrip.origin" id="origin" placeholder="Enter origin" required>
       </div>
       <div class="form-group">
         <label for="destination">Arrive at: </label>
-        <input type="text" class="form-control" ng-model="newtrip.destination" id="destination" placeholder="Enter destination">
+        <input type="text" class="form-control" ng-model="newtrip.destination" id="destination" placeholder="Enter destination" required>
       </div>
       <div class="form-group">
         <label for="date">Trip's date: </label>
-        <input type="date" class="form-control" ng-model="newtrip.date" id="date" placeholder="Enter trip's date">
+        <input type="date" class="form-control" ng-model="newtrip.date" id="date" placeholder="Enter trip's date" required>
       </div>
       <div class="form-group">
         <label for="depart_time">Departure time: </label>
-        <input type="datetime" class="form-control" ng-model="newtrip.depart_time" id="depart_time" placeholder="Enter departure time">
+        <input type="datetime" class="form-control" ng-model="newtrip.depart_time" id="depart_time" placeholder="Enter departure time" required>
       </div>
       <div class="form-group">
         <label for="arrival_time">Arrival time: </label>
-        <input type="datetime" class="form-control" ng-model="newtrip.arrival_time" id="arrival_time" placeholder="Enter estimated arrival time">
+        <input type="datetime" class="form-control" ng-model="newtrip.arrival_time" id="arrival_time" placeholder="Enter estimated arrival time" required>
       </div>
       <div class="form-group">
         <label for="seats_num">Number of available seats: </label>
-        <input type="number" class="form-control" ng-model="newtrip.seats_num" id="seats_num" placeholder="Enter seats number">
+        <input type="number" class="form-control" ng-model="newtrip.seats_num" id="seats_num" placeholder="Enter seats number" required>
       </div>
       <div class="form-group">
         <label for="contact">Contact information: </label>
-        <input type="text" class="form-control" ng-model="newtrip.contact" id="contact" placeholder="Enter contact info">
+        <input type="text" class="form-control" ng-model="newtrip.contact" id="contact" placeholder="Enter contact info" required>
       </div>
       </br>
         <button type="submit" class="btn btn-default">Submit</button>
