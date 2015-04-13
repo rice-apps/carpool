@@ -15,7 +15,7 @@ for more on the relationship between User and Post, and how to access one from t
 
 
 class User(db.Model):
-    # Structure of the data held in a User
+	# Structure of the data held in a User
 	id = db.Column(db.Integer, primary_key=True)
 	nickname = db.Column(db.String(64), index=True, unique=True)
 	email = db.Column(db.String(120), index=True, unique=True)
@@ -44,5 +44,16 @@ class Trip(db.Model):
 	TOD = db.Column(db.String(8), index=True, unique=True)#Time Of Departure, form: "HH:MM"
 	TOA = db.Column(db.String(8), index=True, unique=True)#Time Of Arrival, form: "HH:MM"
 	# For printing
+
 	def __repr__(self):
 		return '<Post %r>' % (self.body)
+
+	def to_json(self):
+		return {
+		"origin" : self.origin,
+		"destination" : self.destination,
+		"contact_info" : self.contact_info,
+		"date" :  self.date,
+		"TOD" : self.TOD,
+		"TOA" : self.TOA,
+		}
