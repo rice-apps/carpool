@@ -1,9 +1,6 @@
 angular.module('carpool').controller("NewTripController", function($location, $http, $scope) {
 
-
-
     $scope.submit = function() {
-        console.log("me?");
         console.log($scope.newtrip);
         $http.post('/newtrip', angular.toJson($scope.newtrip) )
              .success(function(){ $location.path('/index') })
