@@ -23,15 +23,15 @@ def newtrip():
                  contact_info=form['contact'],
                  date=form['date'],
                  TOA=form['arrival_time'],
-                 TOD=form['depart_time'])
+                 TOD=form['depart_time'],
+				 seats=form['seats_num'])
         db.session.add(t)
         db.session.commit()
         return redirect('/index') # if successful post, return to home page
 
     return render_template('newtrip.html',
                        title='Post a new trip',
-                       form=form
-)
+                       form=form)
 
 @app.route('/')
 @app.route('/index')

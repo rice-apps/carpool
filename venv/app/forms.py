@@ -9,6 +9,7 @@ class NewTripForm(Form):
 	day = StringField('destination', validators=[DataRequired()])
 	depart_time = StringField('destination', validators=[DataRequired()])
 	arrival_time = StringField('destination', validators=[DataRequired()])
+	seats_num = StringField('destination', validators=[DataRequired()])
 
 class LoginForm(Form):
     openid = StringField('openid', validators=[DataRequired()])
