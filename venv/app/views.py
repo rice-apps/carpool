@@ -7,6 +7,8 @@ from .forms import LoginForm, NewTripForm
 from .models import User
 from .models import Trip
 
+app.config['CAS_SERVER'] = 'https://netid.rice.edu'
+app.config['CAS_AFTER_LOGIN'] = 'index'
 
 @app.route('/newtrip', methods=['GET','POST'])
 def newtrip():
@@ -37,15 +39,15 @@ def newtrip():
 @app.route('/index')
 def index():
 
+    # User Net ID
+    login = session.get(app.config['CAS_USERNAME_SESSION_KEY'], None)
 
-    return make_response(open('app/static/templates/index.html').read())
-    #return send_from_directory('static/templates', 'index.html')
+    # Check if there someone logged in
+    if login is None:
+        return make_response(open('app/static/templates/login.html').read())
+    else:
+        return make_response(open('app/static/templates/index.html').read())
 
-
-
-    #user = {'nickname': 'Miguel'} #fake user
-    #db_user = User.query.filter_by(nickname=user['nickname']).first()
-    #posts = db_user.posts.all()
 
 
 @app.route('/trips')
@@ -56,10 +58,3 @@ def get_trips():
     result = { "trips": trips_list }
 
     return jsonify(result)
-
-@app.route('/login', methods=['GET','POST'])
-def login():
-    form = LoginForm()
-    return render_template('login.html',
-                           title='Sign In',
-                           form=form)
