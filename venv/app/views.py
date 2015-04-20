@@ -6,6 +6,8 @@ from app import app, db#,oid, lm
 from .forms import LoginForm, NewTripForm
 from .models import User
 from .models import Trip
+from sqlalchemy import delete
+from datetime import date
 
 
 @app.route('/newtrip', methods=['GET','POST'])
@@ -21,7 +23,7 @@ def newtrip():
         t = Trip(origin=form['origin'],
                  destination=form['destination'],
                  contact_info=form['contact'],
-                 date=form['date'],
+                 date=form['date'][:10],
                  TOA=form['arrival_time'],
                  TOD=form['depart_time'],
 				 seats=form['seats_num'])
@@ -41,16 +43,29 @@ def index():
     return make_response(open('app/static/templates/index.html').read())
     #return send_from_directory('static/templates', 'index.html')
 
-
-
     #user = {'nickname': 'Miguel'} #fake user
     #db_user = User.query.filter_by(nickname=user['nickname']).first()
     #posts = db_user.posts.all()
+
+def delete_old(trips):
+    today = str(date.today())
+
+    print "\nToday's date: " + today
+
+    for trip in trips:
+        this_date = trip.date
+        print "Trip w/ date: " + this_date
+        if this_date < today:
+            print this_date + " is before today, need to delete"
+            db.session.delete(trip)
+            db.session.commit()
+            trips.remove(trip)
 
 
 @app.route('/trips')
 def get_trips():
     trips = Trip.query.all()
+    delete_old(trips)
     trips_list = map(Trip.to_json, trips)
     print trips_list
     result = { "trips": trips_list }
