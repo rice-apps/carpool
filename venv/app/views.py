@@ -15,6 +15,10 @@ app.config['APP_URL'] = "http://localhost:5000"
 
 @app.route('/newtrip', methods=['GET','POST'])
 def newtrip():
+
+    # User Net ID
+    netid = session.get(app.config['CAS_USERNAME_SESSION_KEY'], None)
+
     form = NewTripForm()
     # Validation now just ensures no fields are empty, should check that times are valid
     if request.method == "POST":
@@ -23,7 +27,8 @@ def newtrip():
         print form
         #if form.validate(request.json):
         #flash("Received trip from %s to %s" % (form.destination.data, form.origin.data))
-        t = Trip(origin=form['origin'],
+        t = Trip(net_id=netid,
+                 origin=form['origin'],
                  destination=form['destination'],
                  contact_info=form['contact'],
                  date=form['date'][:10],
