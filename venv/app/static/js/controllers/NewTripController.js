@@ -6,7 +6,7 @@ angular.module('carpool').controller("NewTripController", function($location, $h
              .success(function(){ $location.path('/index') })
     };
 
-        $scope.master = {};
+    $scope.master = {};
     $scope.reset = function() {
         $scope.newtrip = angular.copy($scope.master);
     };

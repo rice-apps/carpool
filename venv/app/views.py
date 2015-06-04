@@ -11,6 +11,7 @@ from datetime import date
 
 app.config['CAS_SERVER'] = 'https://netid.rice.edu'
 app.config['CAS_AFTER_LOGIN'] = 'index'
+app.config['APP_URL'] = "http://localhost:5000"
 
 @app.route('/newtrip', methods=['GET','POST'])
 def newtrip():
@@ -29,6 +30,7 @@ def newtrip():
                  TOA=form['arrival_time'],
                  TOD=form['depart_time'],
 				 seats=form['seats_num'])
+
         db.session.add(t)
         db.session.commit()
         return redirect('/index') # if successful post, return to home page
@@ -46,8 +48,10 @@ def index():
 
     # Check if there someone logged in
     if login is None:
+        # Send login page
         return make_response(open('app/static/templates/login.html').read())
     else:
+        # Send home page
         return make_response(open('app/static/templates/index.html').read())
 
 
