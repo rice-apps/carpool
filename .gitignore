@@ -2,3 +2,4 @@
 *.xml
 *.pyc
 *.db
+/db_repository

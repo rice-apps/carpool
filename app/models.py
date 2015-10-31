@@ -14,36 +14,26 @@ for more on the relationship between User and Post, and how to access one from t
 """
 
 
-class User(db.Model):
-	# Structure of the data held in a User
-	id = db.Column(db.Integer, primary_key=True)
-	nickname = db.Column(db.String(64), index=True, unique=True)
-	email = db.Column(db.String(120), index=True, unique=True)
-	posts = db.relationship('Post', backref='author', lazy='dynamic')
-	# For printing
-	def __repr__(self):
-		return '<User %r>' % (self.nickname)
-		
-class Post(db.Model):
-	# Structure of the data held in a Post
-	id = db.Column(db.Integer, primary_key = True)
-	body = db.Column(db.String(140))
-	timestamp = db.Column(db.DateTime)
-	user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-	# For printing
-	def __repr__(self):
-		return '<Post %r>' % (self.body)
+# class User(db.Model):
+# 	# Structure of the data held in a User
+# 	id = db.Column(db.Integer, primary_key=True)
+# 	nickname = db.Column(db.String(64), index=True, unique=True)
+# 	email = db.Column(db.String(120), index=True, unique=True)
+# 	posts = db.relationship('Post', backref='author', lazy='dynamic')
+# 	# For printing
+# 	def __repr__(self):
+# 		return '<User %r>' % (self.nickname)
 
 class Trip(db.Model):
 	# Structure of the data held in a Trip
 	id = db.Column(db.Integer, primary_key=True)
-	origin = db.Column(db.String(64), index=True, unique=True) #Thought: break up into subsections (street, city, etc) for standardization
-	destination = db.Column(db.String(64), index=True, unique=True) #Thought: break up into subsections (street, city, etc) for standardization
-	contact_info = db.Column(db.String(64), index=True, unique=True) 
-	date = db.Column(db.String(8), index=True, unique=True)
-	TOD = db.Column(db.String(8), index=True, unique=True)#Time Of Departure, form: "HH:MM"
-	TOA = db.Column(db.String(8), index=True, unique=True)#Time Of Arrival, form: "HH:MM"
-	seats = db.Column(db.String(8), index=True, unique=True)
+	origin = db.Column(db.String(64), index=True) #Thought: break up into subsections (street, city, etc) for standardization
+	destination = db.Column(db.String(64), index=True) #Thought: break up into subsections (street, city, etc) for standardization
+	contact_info = db.Column(db.String(64), index=True)
+	date = db.Column(db.String(8), index=True)
+	TOD = db.Column(db.String(8), index=True)#Time Of Departure, form: "HH:MM"
+	TOA = db.Column(db.String(8), index=True)#Time Of Arrival, form: "HH:MM"
+	seats = db.Column(db.String(8), index=True)
 	# For printing
 
 	def __repr__(self):
