@@ -32,36 +32,42 @@
 
       <div class="site-wrapper-inner">
 
-        <div class="cover-container">
+       <div class="cover-container">
 
-          <div class="masthead clearfix">
-            <div class="inner">
-              <h3 class="masthead-brand">Carpool</h3>
-              <nav>
-                  <div class="nav masthead-nav" ng-controller="NavbarController">
-                    <ul class="nav navbar-nav">
-                        <li ng-class="{ active: isActive('/')}"><a href="#/">Home</a></li>
-                        <li ng-class="{ active: isActive('/trips')}"><a href="#trips">Trips</a></li>
-                        <li ng-class="{ active: isActive('/newtrip')}"><a href="#newtrip">New trip</a></li>
-                        <li ng-class="{ active: isActive('/')}"><a href="#test">Contact</a></li>
-                    </ul>
-                </div>
-              </nav>
+         <nav class="navbar navbar-default masthead clearfix" ng-controller="NavbarController">
+          <!--<div class="masthead clearfix" ng-controller="NavbarController">-->
+
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="#">Carpool</a>
             </div>
-          </div>
 
-          <div class="inner cover">
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
+              <ul class="nav navbar-nav navbar-right">
+                <li ng-class="{ active: isActive('/')}"><a href="#/">Home</a></li>
+                <li ng-class="{ active: isActive('/trips')}"><a href="#trips">Trips</a></li>
+                <li ng-class="{ active: isActive('/newtrip')}"><a href="#newtrip">New trip</a></li>
+                <li ng-class="{ active: isActive('/contact')}"><a href="#test">Contact</a></li>
+                <li ng-class="{ active: isActive('/logout')}"><a href="logout">Log out</a></li>
+              </ul>
+            </div>
 
-            </br>
+        </nav>
 
-          </div>
+        <div class="inner cover"></br></div>
 
-          <!-- angular templating -->
-          <!-- this is where content will be injected -->
-            <div ng-view></div>
+        <!-- angular templating -->
+        <!-- this is where content will be injected -->
+        <div ng-view></div>
 
-
-        </div>
+       </div>
 
       </div>
 
